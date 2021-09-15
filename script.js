@@ -1,6 +1,10 @@
 // Task #1
 const fib = (n) => {
-	return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+	let result = [0, 1];
+	for (let i = 2; i < n; i++) {
+		result.push(result[i-2] + result[i-1])
+	}
+	return result;
 }
 
 // Task #2
@@ -54,9 +58,10 @@ const compareArray = (array) => {
 	const booleanArray = [];
 	for (let i = 0; i < array.length - 1; i++) {
 		booleanArray.push(
-				array[i].charAt(0) === array[i + 1].charAt(0)
-					&& 
-				array[i].charAt(array[i].length - 1) === array[i + 1].charAt(array[i + 1].length - 1)
+			(typeof array[i] === 'string') && 
+			(typeof array[i + 1] === 'string') && 
+			(array[i].charAt(0) === array[i + 1].charAt(0)) && 
+			(array[i].charAt(array[i].length - 1) === array[i + 1].charAt(array[i + 1].length - 1))
 		);
 	}
 	return booleanArray;
